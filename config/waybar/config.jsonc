@@ -21,8 +21,19 @@
     "tray"
   ],
   "custom/host": {
-    "format": "Eagle",
-    "tooltip": false
+    "exec": "cat /etc/hostname",
+    "interval": "once",
+    "format": "{}",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "~/.config/waybar/power-menu.xml",
+    "menu-actions": {
+      "lock": "~/.local/bin/x13s-power lock",
+      "suspend": "~/.local/bin/x13s-power suspend",
+      "logout": "~/.local/bin/x13s-power logout",
+      "reboot": "~/.local/bin/x13s-power reboot",
+      "poweroff": "~/.local/bin/x13s-power poweroff"
+    }
   },
   "sway/workspaces": {
     "disable-scroll": true,

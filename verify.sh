@@ -16,7 +16,7 @@ json.loads((h/'.config/waybar/config.jsonc').read_text())
 c=configparser.ConfigParser(interpolation=None);c.read(h/'.config/gtklock/config.ini')
 assert c.getboolean('main','idle-hide') is False
 css=Gtk.CssProvider();css.load_from_path(str(h/'.config/gtklock/style.css'))
-for name in ('start-sway','x13s-lock','sway-shot'):
+for name in ('start-sway','x13s-lock','sway-shot','x13s-power'):
  import subprocess
  subprocess.run(['sh','-n',str(h/'.local/bin'/name)],check=True)
 print('Sway, foot, Waybar JSON, gtklock CSS/INI and shell syntax: OK')

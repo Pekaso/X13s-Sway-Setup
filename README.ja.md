@@ -331,3 +331,26 @@ git archive --format=tar.gz --prefix=x13s-sway-setup/ \
 
 `git archive` に入るのはコミット済みの内容です。先に変更をコミットしてください。
 リモートリポジトリは設定していません。必要に応じて追加し、内容を確認してからpushしてください。
+
+
+## 11. ホスト名から電源メニュー
+
+Waybarの `custom/host` を左クリックすると、クリック位置にGTKのリストメニューを表示します。
+Waybar内蔵の `menu=on-click` を使用し、追加の電源メニューパッケージは不要です。
+
+- ロック: 既存の `x13s-lock` を実行。
+- スリープ: ロック完了後に `systemctl suspend`。ロック失敗時はスリープしません。
+- ログアウト・再起動・電源オフ: Fuzzelで確認してから実行。初期選択はキャンセルです。
+- メニュー外クリックやEscapeで閉じられます。
+
+設定は `config/waybar/power-menu.xml`、`config/waybar/config.jsonc`、
+`config/waybar/style.css` と `bin/x13s-power` に保存しています。
+ホスト名が画面の左右どちらに配置されていても動作します。
+実機側を編集した後は `python3 sync-configs.py --apply` で取り込めます。
+
+```bash
+python3 tests/check_power.py
+```
+
+このテストは電源操作・ロック操作をすべてスタブへ置き換え、確認のキャンセル・実行先・
+スリープ前のロック順序を確認します。実際にログアウト・再起動等は行いません。

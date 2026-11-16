@@ -20,3 +20,15 @@ window#waybar { background: #13151f; color: #a9b1d6; border-bottom: 1px solid #2
 
 /* Backlight reuses its format as plain tooltip text: keep markup out. */
 #backlight { font-family: "Symbols Nerd Font Mono", "JetBrains Mono", monospace; }
+
+/* Hostname power menu. */
+#custom-host:hover { background: #292e42; }
+menu#x13s-power-menu {
+  background: #1a1b26;
+  color: #c0caf5;
+  border: 1px solid #414868;
+  padding: 6px;
+}
+#x13s-power-menu menuitem { padding: 9px 18px; }
+#x13s-power-menu menuitem:hover { background: #33467c; }
+#x13s-power-menu separator { background: #292e42; min-height: 1px; margin: 5px 0; }
