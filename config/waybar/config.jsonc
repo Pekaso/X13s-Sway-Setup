@@ -44,7 +44,16 @@
   },
   "clock": {
     "format": "{:%a %m/%d  %H:%M}",
-    "tooltip-format": "{:%Y-%m-%d %H:%M}"
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+        "mode": "month",
+        "first-day-of-week": 1,
+        "format": {
+            "months": "<b>{}</b>",
+            "weekdays": "<b>{}</b>",
+            "today": "<span color='#7aa2f7'><b><u>{}</u></b></span>"
+        }
+    }
   },
   "cpu": {
     "format": "<span font_family=\"Symbols Nerd Font Mono\"></span>  {usage}%",

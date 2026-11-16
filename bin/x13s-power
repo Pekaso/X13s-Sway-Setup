@@ -1,0 +1,22 @@
+#!/bin/sh
+set -eu
+# GtkMenu chooses an action; only exact whitelisted actions are accepted.
+case "${1:-}" in
+    lock) exec "$HOME/.local/bin/x13s-lock" ;;
+    suspend)
+        "$HOME/.local/bin/x13s-lock"
+        exec systemctl suspend
+        ;;
+    logout) label='ログアウト';;
+    reboot) label='再起動';;
+    poweroff) label='電源オフ';;
+    *) printf 'Usage: x13s-power {lock|suspend|logout|reboot|poweroff}\n' >&2; exit 2;;
+esac
+# Cancellation is the default; Escape or dismissing the chooser is a no-op.
+choice=$(printf 'キャンセル\n%sする\n' "$label" | fuzzel --dmenu --prompt "$label: " --lines 2 --width 28) || exit 0
+[ "$choice" = "${label}する" ] || exit 0
+case "$1" in
+    logout) exec swaymsg exit;;
+    reboot) exec systemctl reboot;;
+    poweroff) exec systemctl poweroff;;
+esac
