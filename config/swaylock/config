@@ -1,0 +1,31 @@
+# Tokyo Night: quiet ring
+color=1a1b26
+font=JetBrains Mono
+font-size=14
+indicator-idle-visible
+indicator-radius=48
+indicator-thickness=2
+line-uses-inside
+separator-color=1a1b26
+inside-color=1a1b26
+inside-clear-color=1a1b26
+inside-ver-color=1a1b26
+inside-wrong-color=1a1b26
+inside-caps-lock-color=1a1b26
+ring-color=414868
+text-color=c0caf5
+ring-clear-color=e0af68
+text-clear-color=e0af68
+ring-ver-color=7aa2f7
+text-ver-color=7aa2f7
+ring-wrong-color=f7768e
+text-wrong-color=f7768e
+ring-caps-lock-color=e0af68
+text-caps-lock-color=e0af68
+key-hl-color=7dcfff
+bs-hl-color=bb9af7
+caps-lock-key-hl-color=e0af68
+caps-lock-bs-hl-color=bb9af7
+ignore-empty-password
+show-failed-attempts
+hide-keyboard-layout

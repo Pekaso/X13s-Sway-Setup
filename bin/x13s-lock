@@ -1,0 +1,9 @@
+#!/bin/sh
+# gtklock daemonizes after acquiring the session lock. Keep swayidle -w waiting
+# until that happens. Fall back to the existing locker if unavailable or failed.
+if command -v gtklock >/dev/null 2>&1; then
+    if gtklock -d; then
+        exit 0
+    fi
+fi
+exec swaylock -f

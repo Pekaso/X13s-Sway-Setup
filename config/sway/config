@@ -1,0 +1,118 @@
+# X13s / Tokyo Night. Super = Windows key.
+set $mod Mod4
+set $term kitty
+set $menu fuzzel
+font pango:JetBrains Mono 10
+floating_modifier $mod normal
+# Restore the last wallpaper selected in Azote on login.
+exec ~/.azotebg
+output eDP-1 scale 1.25
+input type:keyboard xkb_layout us
+input type:keyboard xkb_options ctrl:nocaps
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+    dwt enabled
+}
+input type:pointer accel_profile adaptive
+# TrackPoint: middle-button scrolling where supported.
+input "type:pointer" scroll_method on_button_down
+input "type:pointer" scroll_button 274
+
+default_border pixel 2
+default_floating_border pixel 2
+gaps inner 8
+gaps outer 4
+smart_gaps on
+client.focused          #7aa2f7 #1a1b26 #c0caf5 #7dcfff #7aa2f7
+client.focused_inactive #292e42 #1a1b26 #565f89 #292e42 #292e42
+client.unfocused        #292e42 #1a1b26 #565f89 #292e42 #292e42
+client.urgent           #f7768e #1a1b26 #f7768e #f7768e #f7768e
+client.background #1a1b26
+
+bindsym $mod+Return exec $term
+bindsym $mod+d exec $menu
+#bindsym $mod+e exec thunar
+bindsym $mod+b exec xdg-open https://www.debian.org
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway session?' -B 'Exit' 'swaymsg exit'
+bindsym $mod+Ctrl+l exec @HOME@/.local/bin/x13s-lock
+bindsym $mod+f fullscreen toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+v split v
+bindsym $mod+minus split h
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+s layout toggle split
+bindsym $mod+a focus parent
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+grave scratchpad show
+bindsym $mod+r mode resize
+mode "resize" {
+    bindsym h resize shrink width 20 px
+    bindsym j resize grow height 20 px
+    bindsym k resize shrink height 20 px
+    bindsym l resize grow width 20 px
+    bindsym Return mode default
+    bindsym Escape mode default
+}
+bindsym $mod+1 workspace number 1
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+0 workspace number 10
+bindsym $mod+Shift+0 move container to workspace number 10
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym Print exec ~/.local/bin/sway-shot
+bindsym $mod+Print exec ~/.local/bin/sway-shot region
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="org.fcitx.fcitx5-config-qt"] floating enable
+
+# Debian session environment + portal activation.
+include /etc/sway/config.d/*
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec mako
+exec fcitx5 -d
+# No automatic suspend; first verify X13s suspend/resume on this kernel.
+exec swayidle -w timeout 300 '@HOME@/.local/bin/x13s-lock' timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep '@HOME@/.local/bin/x13s-lock'
+bar {
+    swaybar_command waybar
+}
+include ~/.config/sway/local.conf

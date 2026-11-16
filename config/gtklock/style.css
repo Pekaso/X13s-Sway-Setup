@@ -1,0 +1,37 @@
+/* Tokyo Night: clock + conventional password form. */
+window {
+    background-image: none;
+    background-color: #1a1b26;
+    color: #c0caf5;
+    font-family: "JetBrains Mono", "Noto Sans CJK JP", monospace;
+    font-size: 14px;
+}
+#clock-label { font-size: 88px; font-weight: 300; color: #c0caf5; }
+#date-label { font-size: 15px; color: #7aa2f7; margin-top: 6px; margin-bottom: 38px; }
+#input-label { color: #a9b1d6; margin-right: 12px; }
+#input-field {
+    color: #c0caf5;
+    background-color: #16161e;
+    background-image: none;
+    border: 1px solid #414868;
+    border-radius: 4px;
+    box-shadow: none;
+    min-height: 32px;
+    padding: 6px 12px;
+    caret-color: #7dcfff;
+}
+#input-field:focus { border-color: #7aa2f7; }
+#unlock-button {
+    background-color: #292e42;
+    background-image: none;
+    color: #c0caf5;
+    border: 1px solid #414868;
+    border-radius: 4px;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 8px 20px;
+    margin-top: 12px;
+}
+#unlock-button:hover, #unlock-button:focus { background-color: #33467c; border-color: #7aa2f7; }
+#error-label { color: #f7768e; }
+#warning-label { color: #e0af68; }

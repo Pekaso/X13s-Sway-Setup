@@ -1,0 +1,54 @@
+@import url("resource:///org/gtk/libgtk/theme/Adwaita/gtk-contained-dark.css");
+
+@define-color theme_bg_color #1a1b26;
+@define-color theme_fg_color #c0caf5;
+@define-color theme_base_color #16161e;
+@define-color theme_text_color #c0caf5;
+@define-color theme_selected_bg_color #33467c;
+@define-color theme_selected_fg_color #c0caf5;
+@define-color borders #414868;
+
+window, #login_window, #login_window > box {
+    background-color: #1a1b26;
+    color: #c0caf5;
+}
+#login_window {
+    border: 1px solid #292e42;
+    border-radius: 6px;
+    box-shadow: none;
+}
+label { color: #c0caf5; text-shadow: none; }
+entry {
+    background-image: none;
+    background-color: #16161e;
+    color: #c0caf5;
+    caret-color: #7dcfff;
+    border: 1px solid #414868;
+    border-radius: 4px;
+    box-shadow: none;
+    min-width: 360px;
+    min-height: 32px;
+    padding: 6px 12px;
+}
+entry:focus { border-color: #7aa2f7; }
+button {
+    background-image: none;
+    background-color: #292e42;
+    color: #c0caf5;
+    border: 1px solid #414868;
+    border-radius: 4px;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 8px 14px;
+}
+button:hover, button:focus { background-color: #33467c; border-color: #7aa2f7; }
+button:disabled { color: #565f89; }
+#panel_window, #panel_window menubar, #panel_window menubar > menuitem {
+    background-color: #13151f;
+    color: #a9b1d6;
+    box-shadow: none;
+}
+#panel_window { border-bottom: 1px solid #292e42; }
+menu { background-color: #1a1b26; color: #c0caf5; }
+menuitem:hover { background-color: #33467c; }
+#error_label { color: #f7768e; }

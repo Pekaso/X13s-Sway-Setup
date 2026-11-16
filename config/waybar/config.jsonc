@@ -1,0 +1,90 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "spacing": 0,
+  "modules-left": [
+    "custom/host",
+    "sway/workspaces",
+    "sway/mode"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "battery",
+    "tray"
+  ],
+  "custom/host": {
+    "format": "Eagle",
+    "tooltip": false
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "format": "{name}"
+  },
+  "sway/mode": {
+    "format": "[{}]"
+  },
+  "clock": {
+    "format": "{:%a %m/%d  %H:%M}",
+    "tooltip-format": "{:%Y-%m-%d %H:%M}"
+  },
+  "cpu": {
+    "format": "<span font_family=\"Symbols Nerd Font Mono\"></span>  {usage}%",
+    "interval": 5
+  },
+  "memory": {
+    "format": "<span font_family=\"Symbols Nerd Font Mono\"></span>  {percentage}%",
+    "interval": 10
+  },
+  "network": {
+    "format-wifi": "<span font_family=\"Symbols Nerd Font Mono\"></span>  {signalStrength}%",
+    "format-ethernet": "<span font_family=\"Symbols Nerd Font Mono\"></span>  up",
+    "format-disconnected": "<span font_family=\"Symbols Nerd Font Mono\"></span>  --",
+    "tooltip-format": "{ifname}: {ipaddr}",
+    "on-click": "foot -e nmtui"
+  },
+  "pulseaudio": {
+    "format": "<span font_family=\"Symbols Nerd Font Mono\">{icon}</span>  {volume}%",
+    "format-muted": "<span font_family=\"Symbols Nerd Font Mono\"></span>  --",
+    "on-click": "pavucontrol",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "backlight": {
+    "device": "backlight",
+    "format": "  {percent}%"
+  },
+  "battery": {
+    "bat": "qcom-battmgr-bat",
+    "states": {
+      "warning": 25,
+      "critical": 10
+    },
+    "format": "<span font_family=\"Symbols Nerd Font Mono\">{icon}</span>  {capacity}%",
+    "format-charging": "<span font_family=\"Symbols Nerd Font Mono\"></span>  {capacity}%",
+    "format-full": "<span font_family=\"Symbols Nerd Font Mono\"></span>  100%",
+    "tooltip-format": "{timeTo}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "tray": {
+    "spacing": 8
+  }
+}

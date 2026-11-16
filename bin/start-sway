@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
+export QT_QPA_PLATFORM=wayland
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+# GTK and foot use Wayland text-input; XWayland apps use XMODIFIERS.
+exec sway "$@"
